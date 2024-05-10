@@ -2,31 +2,31 @@ import React, { useState, useEffect } from "react";
 import {
   Divider,
   List,
-  ListItem,
+  ListItemButton,
   ListItemText,
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./styles.css";
-import axios from "axios";
+import fetchModel from "../../lib/fetchModelData";
 /**
  * Define UserList, a React component of Project 4.
  */
 function UserList() {
-  const [users, setUsers] = useState();
+  const [users, setUsers] = useState([]); // State to store the list of users
+
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchUserList = async () => {
       try {
-        const response = await axios.get("http://localhost:8081/api/user/list");
-        setUsers(response.data);
+        const userList = await fetchModel("user/list");
+        setUsers(userList);
       } catch (error) {
-        console.error("Error fetching user data:", error);
-        // Handle error gracefully, e.g., display an error message to the user
+        console.error("Error fetching user list:", error);
       }
     };
 
-    fetchUsers(); // Call the function to fetch users on component mount
-  }, []); // Em
+    fetchUserList();
+  }, []);
   if (users)
     return (
       <div>
@@ -39,9 +39,9 @@ function UserList() {
         <List component="nav">
           {users.map((item) => (
             <React.Fragment key={item.id}>
-              <ListItem button component={Link} to={`/users/${item._id}`}>
+              <ListItemButton component={Link} to={`/users/${item._id}`}>
                 <ListItemText primary={item.last_name} />
-              </ListItem>
+              </ListItemButton>
               <Divider />
             </React.Fragment>
           ))}
