@@ -41,7 +41,11 @@ function UserDetail() {
           <Typography className="user-info">
             Occupation: {user.occupation}
           </Typography>
-          <Link href={`/photos/${userId}`} className="view-photos-link">
+          <Link
+            component={Link}
+            to={`/photos/${userId}`}
+            className="view-photos-link"
+          >
             View Photos
           </Link>
         </div>

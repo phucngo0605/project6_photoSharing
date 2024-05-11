@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/user", UserRouter);
 app.use("/api/photo", PhotoRouter);
-app.use("api/comment", CommentRouter);
+app.use("/api/comment", CommentRouter);
 app.get("/", (request, response) => {
   response.send({ message: "Hello from photo-sharing app API!" });
 });
