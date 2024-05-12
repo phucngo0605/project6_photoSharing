@@ -29,7 +29,7 @@ function UserPhotos() {
     <div>
       <Typography variant="body1">User Photo for User ID: {userId}</Typography>
       <div key={photo._id}>
-        {/* <img src={"/images/" + photo.file_name} /> */}
+        <img src={"/images/" + photo.file_name} />
         <Typography variant="body2">Time: {photo.date_time}</Typography>
         <Typography variant="h6">Comments</Typography>
 

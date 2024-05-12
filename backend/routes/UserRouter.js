@@ -17,34 +17,5 @@ router.get("/list", async (request, response) => {
     response.status(500).send("Error retrieving users"); // Send generic error message
   }
 });
-router.get("/:id", async (req, res) => {
-  var id = req.params.id;
-  // console.log(id);
-  User.findOne({ _id: id })
-    .then((user) => {
-      if (!user) {
-        console.log("User with _id:" + id + " not found.");
-        return res.status(400).send("Not found");
-      }
-
-      const indUser_cleanUp = {
-        _id: user._id,
-        last_name: user.last_name,
-        location: user.location,
-        description: user.description,
-        occupation: user.occupation,
-      };
-      return res.status(200).send(indUser_cleanUp);
-    })
-    .catch((err) => {
-      console.error(err);
-      return res.status(500).send("Internal server error"); // Handle errors appropriately
-    });
-});
-
-router.post("/", async (request, response) => {
-  // Implement logic to handle user creation (POST request)
-  // ... (code to create a new user using User model)
-});
 
 module.exports = router;
