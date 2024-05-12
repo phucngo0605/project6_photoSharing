@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import "./styles.css";
 import axios from "axios";
 import "./styles.css";
-
+import logoImage from "/home/quan/photo_sharing_mongoDB/frontend/src/images/logo.png";
 /**
  * Define TopBar, a React component of Project 4.
  */
@@ -36,7 +36,7 @@ function TopBar(props) {
     <AppBar className="cs142-topbar-appBar" position="absolute">
       <Toolbar>
         <Typography variant="h5" color="inherit">
-          RAN LE
+          <img src={logoImage} height={50} width={50} />
         </Typography>
 
         <Typography
